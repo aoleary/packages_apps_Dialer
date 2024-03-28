@@ -246,6 +246,18 @@ public class ProximitySensor
     final boolean horizontal = (orientation == AccelerometerListener.ORIENTATION_HORIZONTAL);
     screenOnImmediately |= !uiShowing && horizontal;
 
+    LogUtil.v("ProximitySensor.updateProximitySensorMode", "Block added by aoleary manually");
+    LogUtil.i(
+        "ProximitySensor.updateProximitySensorMode",
+        "screenOnImmediately: %b, dialPadVisible: %b, "
+            + "offHook: %b, horizontal: %b, uiShowing: %b, audioRoute: %s",
+        screenOnImmediately,
+        dialpadVisible,
+        isPhoneOffhook,
+        orientation == AccelerometerListener.ORIENTATION_HORIZONTAL,
+        uiShowing,
+        CallAudioState.audioRouteToString(audioRoute));
+
     // We do not keep the screen off when dialpad is visible, we are horizontal, and
     // the in-call screen is being shown.
     // At that moment we're pretty sure users want to use it, instead of letting the
